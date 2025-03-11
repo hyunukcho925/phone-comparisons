@@ -5,31 +5,29 @@ import Image from "next/image";
 import RightIcon from "@/components/icon/RightIcon";
 import { toSlug } from "@/utils/stringUtils";
 
+interface PageProps {
+  params: {
+    brand_name_en: string;
+    product_name: string;
+  };
+}
+
 export async function generateStaticParams() {
   const products = await getProducts();
+
   return products.map((product) => ({
     brand_name_en: toSlug(product.brand?.brand_name_en || ""),
     product_name: toSlug(product.product_name_en),
   }));
 }
 
-// 페이지 컴포넌트
-export default async function ProductPage({
-  params,
-}: {
-  params: {
-    brand_name_en: string;
-    product_name: string;
-  };
-  searchParams?: { [key: string]: string | string[] | undefined };
-}) {
-  const { brand_name_en, product_name } = params;
+export default async function ProductPage({ params }: PageProps) {
   const products = await getProducts();
 
   const product = products.find(
     (p) =>
-      toSlug(p.brand?.brand_name_en || "") === brand_name_en &&
-      toSlug(p.product_name_en) === product_name
+      toSlug(p.brand?.brand_name_en || "") === params.brand_name_en &&
+      toSlug(p.product_name_en) === params.product_name
   );
 
   if (!product) {
