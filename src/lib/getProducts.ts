@@ -18,6 +18,16 @@ export interface Distributor {
   link: string;
 }
 
+export interface ProductColor {
+  product_color_id: number;
+  product_id: number;
+  color_name_ko: string;
+  color_name_en: string;
+  color_code: string;
+  product_image: string;
+  color_order: number;
+}
+
 export interface Product {
   product_id: number;
   brand_id: number;
@@ -25,11 +35,11 @@ export interface Product {
   product_name_ko: string;
   model_name: string;
   display_size: number;
-  display_resolution: string;
-  display_type: string;
+  product_weight: string;
   product_image: string;
   brand?: Brand;
   distributors?: Distributor[];
+  colors?: ProductColor[];
 }
 
 export async function getProducts(): Promise<Product[]> {
@@ -47,6 +57,14 @@ export async function getProducts(): Promise<Product[]> {
           distributor_id,
           distributor_name,
           link
+        ),
+        colors:product_color (
+          product_color_id,
+          color_name_ko,
+          color_name_en,
+          color_code,
+          product_image,
+          color_order
         )
       `);
 
@@ -54,7 +72,8 @@ export async function getProducts(): Promise<Product[]> {
 
     return data.map(product => ({
       ...product,
-      distributors: product.distributors || []
+      distributors: product.distributors || [],
+      colors: product.colors || []
     }));
   } catch (error) {
     console.error('데이터베이스 조회 중 오류 발생:', error);
@@ -77,6 +96,14 @@ export async function getProductById(productId: number): Promise<Product | null>
           distributor_id,
           distributor_name,
           link
+        ),
+        colors:product_color (
+          product_color_id,
+          color_name_ko,
+          color_name_en,
+          color_code,
+          product_image,
+          color_order
         )
       `)
       .eq('product_id', productId)
@@ -89,7 +116,8 @@ export async function getProductById(productId: number): Promise<Product | null>
 
     return {
       ...data,
-      distributors: data.distributors || []
+      distributors: data.distributors || [],
+      colors: data.colors || []
     };
   } catch (error) {
     console.error('데이터베이스 조회 중 오류 발생:', error);
