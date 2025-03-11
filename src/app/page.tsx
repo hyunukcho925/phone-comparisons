@@ -3,6 +3,7 @@ import Link from "next/link";
 import BottomNavigation from "@/components/navigation/BottomNavigation";
 import MainHeader from "@/components/header/MainHeader";
 import SearchIcon from "@/components/icon/SearchIcon";
+import ProductList from "@/components/product/ProductList";
 
 
 export default async function Page() {
@@ -34,6 +35,7 @@ export default async function Page() {
           <h2 className="text-xl font-bold mb-4 flex items-center">
             <span className="mr-1">⚡</span> 지금 가장 HOT한 핸드폰
           </h2>
+          <ProductList />
         </div>
       </main>
       <BottomNavigation />
