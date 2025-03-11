@@ -14,11 +14,17 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function ProductPage({ 
-  params: { brand_name_en, product_name } 
-}: { 
-  params: { brand_name_en: string; product_name: string } 
-}) {
+type Props = {
+  params: {
+    brand_name_en: string;
+    product_name: string;
+  };
+  searchParams?: { [key: string]: string | string[] | undefined };
+};
+
+export default async function ProductPage({
+  params: { brand_name_en, product_name }
+}: Props) {
   const products = await getProducts();
 
   const product = products.find(
