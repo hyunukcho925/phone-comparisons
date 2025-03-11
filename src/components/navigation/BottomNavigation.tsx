@@ -12,7 +12,7 @@ const BottomNavigation: React.FC = () => {
 
   const navItems = [
     { name: "홈", path: "/", icon: HomeIcon },
-    { name: "카테고리", path: "/category", icon: CategoryIcon },
+    { name: "브랜드", path: "/brand", icon: CategoryIcon },
     { name: "검색", path: "/search", icon: SearchIcon },
     // { name: "마이", path: "/my", icon: UserIcon }, //
   ];
