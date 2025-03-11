@@ -6,10 +6,10 @@ import RightIcon from "@/components/icon/RightIcon";
 import { toSlug } from "@/utils/stringUtils";
 
 interface PageProps {
-  params: {
+  params: Promise<{
     brand_name_en: string;
     product_name_en: string;
-  };
+  }>;
   searchParams: { [key: string]: string | string[] | undefined };
 }
 
@@ -24,7 +24,8 @@ export async function generateStaticParams() {
 
 export default async function ProductPage({ params }: PageProps) {
   const products = await getProducts();
-  const { brand_name_en, product_name_en } = params;
+  const resolvedParams = await params;
+  const { brand_name_en, product_name_en } = resolvedParams;
   
   const product = products.find(
     (p) =>
