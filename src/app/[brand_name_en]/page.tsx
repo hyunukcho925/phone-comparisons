@@ -1,12 +1,14 @@
 import BrandHeader from '@/components/header/BrandHeader';
+import BottomNavigation from '@/components/navigation/BottomNavigation';
 import { getBrands } from '@/lib/getBrands';
 import { notFound } from 'next/navigation';
 
-interface Props {
+type Props = {
   params: {
     brand_name_en: string;
   };
-}
+  searchParams: { [key: string]: string | string[] | undefined };
+};
 
 export default async function BrandDetailPage({ params: { brand_name_en } }: Props) {
   const brands = await getBrands();
@@ -29,6 +31,7 @@ export default async function BrandDetailPage({ params: { brand_name_en } }: Pro
         </div>
       </div>
 
+      <BottomNavigation />
     </div>
   );
 } 
