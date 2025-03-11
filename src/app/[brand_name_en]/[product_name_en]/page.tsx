@@ -10,7 +10,6 @@ interface PageProps {
     brand_name_en: string;
     product_name_en: string;
   }>;
-  searchParams: { [key: string]: string | string[] | undefined };
 }
 
 export async function generateStaticParams() {
