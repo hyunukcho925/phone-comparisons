@@ -17,7 +17,7 @@ export async function generateStaticParams() {
 
   return products.map((product) => ({
     brand_name_en: toSlug(product.brand?.brand_name_en || ""),
-    product_name: toSlug(product.product_name_en),
+    product_name_en: toSlug(product.product_name_en),
   }));
 }
 
