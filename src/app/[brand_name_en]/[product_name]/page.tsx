@@ -5,14 +5,6 @@ import Image from "next/image";
 import RightIcon from "@/components/icon/RightIcon";
 import { toSlug } from "@/utils/stringUtils";
 
-interface PageProps {
-  params: {
-    brand_name_en: string;
-    product_name: string;
-  };
-  searchParams?: { [key: string]: string | string[] | undefined };
-}
-
 export async function generateStaticParams() {
   const products = await getProducts();
 
@@ -22,13 +14,17 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function ProductPage({ params }: PageProps) {
+export default async function ProductPage({ 
+  params: { brand_name_en, product_name } 
+}: { 
+  params: { brand_name_en: string; product_name: string } 
+}) {
   const products = await getProducts();
 
   const product = products.find(
     (p) =>
-      toSlug(p.brand?.brand_name_en || "") === params.brand_name_en &&
-      toSlug(p.product_name_en) === params.product_name
+      toSlug(p.brand?.brand_name_en || "") === brand_name_en &&
+      toSlug(p.product_name_en) === product_name
   );
 
   if (!product) {
@@ -299,3 +295,4 @@ export default async function ProductPage({ params }: PageProps) {
     </div>
   );
 }
+
