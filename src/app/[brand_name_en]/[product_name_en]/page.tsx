@@ -24,11 +24,12 @@ export async function generateStaticParams() {
 
 export default async function ProductPage({ params }: PageProps) {
   const products = await getProducts();
-
+  const { brand_name_en, product_name_en } = params;
+  
   const product = products.find(
     (p) =>
-      p.brand?.brand_name_en.toLowerCase() === params.brand_name_en &&
-      p.product_name_en.toLowerCase() === params.product_name_en
+      toSlug(p.brand?.brand_name_en || "") === brand_name_en &&
+      toSlug(p.product_name_en) === product_name_en
   );
 
   if (!product) {
