@@ -5,7 +5,9 @@ import Image from "next/image";
 import RightIcon from "@/components/icon/RightIcon";
 import { toSlug } from "@/utils/stringUtils";
 
-export async function generateStaticParams() {
+export async function generateStaticParams(): Promise<
+  { brand_name_en: string; product_name: string }[]
+> {
   const products = await getProducts();
 
   return products.map((product) => ({
@@ -22,9 +24,8 @@ type Props = {
   searchParams?: { [key: string]: string | string[] | undefined };
 };
 
-export default async function ProductPage({
-  params: { brand_name_en, product_name }
-}: Props) {
+export default async function ProductPage({ params }: Props) {
+  const { brand_name_en, product_name } = params;
   const products = await getProducts();
 
   const product = products.find(
@@ -301,4 +302,3 @@ export default async function ProductPage({
     </div>
   );
 }
-
