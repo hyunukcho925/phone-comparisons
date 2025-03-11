@@ -10,6 +10,7 @@ interface PageProps {
     brand_name_en: string;
     product_name_en: string;
   };
+  searchParams: { [key: string]: string | string[] | undefined };
 }
 
 export async function generateStaticParams() {
@@ -26,8 +27,8 @@ export default async function ProductPage({ params }: PageProps) {
 
   const product = products.find(
     (p) =>
-      toSlug(p.brand?.brand_name_en || "") === params.brand_name_en &&
-      toSlug(p.product_name_en) === params.product_name_en
+      p.brand?.brand_name_en.toLowerCase() === params.brand_name_en &&
+      p.product_name_en.toLowerCase() === params.product_name_en
   );
 
   if (!product) {
