@@ -139,7 +139,7 @@ export default function SearchPage() {
   return (
     <div className="min-h-screen flex flex-col">
       <SearchHeader onSearch={handleSearch} />
-      <main className="flex-grow p-6">
+      <main className="flex-grow p-6 bg-gray-100">
         <div className="max-w-6xl mx-auto">
           {isLoading ? (
             <p className="text-center">검색 중...</p>

@@ -19,10 +19,12 @@ interface ProductComponentProps {
 export default function ProductComponent({ product }: ProductComponentProps) {
   return (
     <Link
-      href={`/${toSlug(product.brand?.brand_name_en || '')}/${toSlug(product.product_name_en)}`}
+      href={`/${toSlug(product.brand?.brand_name_en || "")}/${toSlug(
+        product.product_name_en
+      )}`}
       className="block"
     >
-      <div className="flex items-center h-32 space-x-4 border rounded-lg p-4 hover:shadow-lg transition-shadow">
+      <div className="flex items-center h-32 space-x-4 border rounded-xl p-4 hover:shadow-lg transition-shadow bg-white">
         <div className="relative w-24 h-32">
           <Image
             src={product.product_image}
@@ -35,9 +37,7 @@ export default function ProductComponent({ product }: ProductComponentProps) {
           <p className="text-gray-600 text-base mb-1">
             {product.brand?.brand_name_ko} ({product.brand?.brand_name_en})
           </p>
-          <h3 className="text-lg font-bold">
-            {product.product_name_ko}
-          </h3>
+          <h3 className="text-lg font-bold">{product.product_name_ko}</h3>
         </div>
       </div>
     </Link>

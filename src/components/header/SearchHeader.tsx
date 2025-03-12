@@ -26,8 +26,12 @@ const SearchHeader: React.FC<SearchHeaderProps> = ({ onSearch }) => {
 
   return (
     <header className="sticky top-0 left-0 right-0 bg-white h-14 z-10">
-      <div className="max-w-[500px] mx-auto px-4 h-full flex items-center">
-        <button onClick={() => router.back()} className="mr-4" aria-label="뒤로 가기">
+      <div className="max-w-screen-md mx-auto px-4 h-14 flex justify-between items-center">
+        <button
+          onClick={() => router.back()}
+          className="mr-4"
+          aria-label="뒤로 가기"
+        >
           <BackIcon className="w-6 h-6 text-gray-900" />
         </button>
         <form onSubmit={handleSearch} className="flex-1">
