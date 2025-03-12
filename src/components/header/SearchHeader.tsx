@@ -4,7 +4,11 @@ import React, { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import BackIcon from "@/components/icon/BackIcon";
 
-const SearchHeader: React.FC = () => {
+interface SearchHeaderProps {
+  onSearch: (searchTerm: string) => void;
+}
+
+const SearchHeader: React.FC<SearchHeaderProps> = ({ onSearch }) => {
   const router = useRouter();
   const [searchTerm, setSearchTerm] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
@@ -16,7 +20,7 @@ const SearchHeader: React.FC = () => {
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (searchTerm.trim()) {
-      router.push(`/search?q=${encodeURIComponent(searchTerm.trim())}`);
+      onSearch(searchTerm.trim());
     }
   };
 
