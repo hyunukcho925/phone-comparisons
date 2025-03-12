@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams, useRouter } from "next/navigation";
 import SearchHeader from "@/components/header/SearchHeader";
 import BottomNavigation from "@/components/navigation/BottomNavigation";
@@ -8,7 +8,7 @@ import ProductComponent from "@/components/product/ProductComponent";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { Product } from '@/lib/getProducts';
 
-export default function SearchPage() {
+function SearchContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const query = searchParams.get("q");
@@ -162,5 +162,13 @@ export default function SearchPage() {
       </main>
       <BottomNavigation />
     </div>
+  );
+}
+
+export default function SearchPage() {
+  return (
+    <Suspense fallback={<div>로딩중...</div>}>
+      <SearchContent />
+    </Suspense>
   );
 }
