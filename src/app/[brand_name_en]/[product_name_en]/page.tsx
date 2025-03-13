@@ -33,13 +33,6 @@ export default async function ProductPage({ params }: PageProps) {
       toSlug(p.product_name_en) === product_name_en
   );
 
-  // 디버깅을 위한 로그 추가
-  console.log('Found product:', {
-    productId: product?.product_id,
-    distributors: product?.distributors,
-    brand: product?.brand,
-  });
-
   if (!product) {
     console.log(
       "Available products:",
