@@ -118,7 +118,7 @@ export default function SearchModal({ isOpen, onClose, onSelect, existingProduct
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
-      <div className="bg-white w-full max-w-[440px] min-h-[40vh] max-h-[80vh] rounded-lg overflow-hidden">
+      <div className="bg-white w-full max-w-[360px] min-h-[60vh] rounded-lg overflow-hidden">
         <div className="p-4 border-b">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-lg font-bold">제품 검색</h2>

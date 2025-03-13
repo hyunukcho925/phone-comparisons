@@ -17,7 +17,9 @@ export default function ComparePage() {
     // 기존 비교 제품 로드
     const storedProducts = localStorage.getItem('CompareProducts');
     if (storedProducts) {
-      setProducts(JSON.parse(storedProducts));
+      const parsedProducts = JSON.parse(storedProducts);
+      console.log('localStorage에서 불러온 제품들:', parsedProducts); // 디버깅용
+      setProducts(parsedProducts);
     }
   }, []);
 
@@ -32,9 +34,20 @@ export default function ComparePage() {
       alert('최대 2개의 제품만 비교할 수 있습니다.');
       return;
     }
-    const updatedProducts = [...products, product];
-    setProducts(updatedProducts);
+    
+    // distributors를 항상 배열로 변환
+    const normalizedProduct = {
+      ...product,
+      distributors: Array.isArray(product.distributors) 
+        ? product.distributors 
+        : product.distributors 
+          ? [product.distributors] 
+          : []
+    };
+    
+    const updatedProducts = [...products, normalizedProduct];
     localStorage.setItem('CompareProducts', JSON.stringify(updatedProducts));
+    setProducts(updatedProducts);
   };
 
   return (
@@ -66,6 +79,21 @@ export default function ComparePage() {
                 />
                 <h2 className="font-bold text-sm">{product.product_name_ko}</h2>
               </Link>
+              {product.distributors && product.distributors.length > 0 && (
+                <div className="mt-2 space-y-1">
+                  {product.distributors.map((distributor) => (
+                    <a
+                      key={distributor.distributor_id}
+                      href={distributor.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block px-3 py-2 text-sm text-white bg-primary rounded hover:bg-primary/80 w-full transition-colors"
+                    >
+                      구매하러 가기
+                    </a>
+                  ))}
+                </div>
+              )}
             </div>
           ))}
           {products.length < 2 && (
