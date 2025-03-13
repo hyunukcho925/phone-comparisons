@@ -68,6 +68,7 @@ export async function getProducts(): Promise<Product[]> {
         ),
         distributors:distributor (
           distributor_id,
+          product_id,
           distributor_name,
           link
         ),
@@ -85,7 +86,9 @@ export async function getProducts(): Promise<Product[]> {
 
     return data.map(product => ({
       ...product,
-      distributors: product.distributors || [],
+      distributors: Array.isArray(product.distributors) 
+        ? product.distributors 
+        : product.distributors ? [product.distributors] : [],
       colors: product.colors || []
     }));
   } catch (error) {
