@@ -27,9 +27,9 @@ export default function CompareButton({ product }: CompareButtonProps) {
   return (
     <button
       onClick={handleCompare}
-      className="w-full mt-4 bg-secondary text-white font-bold py-3 px-2 rounded-lg"
+      className="w-full border border-primary text-primary font-bold py-3 px-2 rounded-lg hover:bg-[#f8f8ff]"
     >
-      비교하기에 추가
+      비교하기
     </button>
   );
 } 

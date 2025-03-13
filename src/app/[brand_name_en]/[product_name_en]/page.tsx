@@ -76,6 +76,21 @@ export default async function ProductPage({ params }: PageProps) {
             </h1>
           </div>
 
+          <CompareButton product={product} />
+          <p className="text-gray-800 font-bold text-center mt-4">
+            {product.product_name_ko} 스펙을 비교해 보세요☝🏻
+          </p>
+        </div>
+
+        <div className="w-full h-[8px] bg-gray-100" />
+
+        {/* 구매처 섹션 */}
+        <div className="px-4 py-6">
+          <h2 className="text-xl font-bold mb-4">
+            {product.product_name_ko} <br />
+            <span className="mt-2 inline-block">구매처</span>
+          </h2>
+
           {product.distributors && product.distributors.length > 0 && (
             <div className="space-y-2">
               {product.distributors.map((distributor) => (
@@ -94,11 +109,7 @@ export default async function ProductPage({ params }: PageProps) {
               ))}
             </div>
           )}
-          
-          <CompareButton product={product} />
         </div>
-
-        {/* 구매처 섹션 */}
 
         <div className="w-full h-[8px] bg-gray-100" />
 
