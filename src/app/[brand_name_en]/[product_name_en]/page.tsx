@@ -4,6 +4,7 @@ import ProductHeader from "@/components/header/ProductHeader";
 import Image from "next/image";
 import RightIcon from "@/components/icon/RightIcon";
 import { toSlug } from "@/utils/stringUtils";
+import CompareButton from "@/components/button/CompareButton";
 
 interface PageProps {
   params: Promise<{
@@ -93,6 +94,8 @@ export default async function ProductPage({ params }: PageProps) {
               ))}
             </div>
           )}
+          
+          <CompareButton product={product} />
         </div>
 
         {/* 구매처 섹션 */}
