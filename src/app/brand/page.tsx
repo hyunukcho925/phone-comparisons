@@ -84,12 +84,8 @@ export default function BrandPage() {
     fetchProducts(newSelectedBrand.brand_id);
   };
 
-  if (isLoading) {
-    return <div>로딩 중...</div>;
-  }
-
   return (
-    <div className="pb-16 bg-gray-100">
+    <div className="pb-16 bg-gray-100 min-h-[100vh]">
       <BrandHeader />
 
       <Tab.Group onChange={handleTabChange}>
@@ -111,33 +107,39 @@ export default function BrandPage() {
         </Tab.List>
 
         <Tab.Panels className="mt-4">
-          {brands.map((brand) => (
-            <Tab.Panel key={brand.brand_id} className="px-4">
-              {products.length > 0 ? (
-                <div className="space-y-4">
-                  {products.map((product) => (
-                    <ProductComponent
-                      key={product.product_id}
-                      product={{
-                        product_id: product.product_id,
-                        product_image: product.product_image,
-                        product_name_ko: product.product_name_ko,
-                        product_name_en: product.product_name_en,
-                        brand: {
-                          brand_name_ko: brand.brand_name_ko,
-                          brand_name_en: brand.brand_name_en,
-                        },
-                      }}
-                    />
-                  ))}
-                </div>
-              ) : (
-                <div className="text-center py-8 text-black">
-                  이 브랜드의 제품이 없습니다.
-                </div>
-              )}
-            </Tab.Panel>
-          ))}
+          {isLoading ? (
+            <div className="text-center py-8 text-gray-600">
+              제품 목록을 불러오는 중...
+            </div>
+          ) : (
+            brands.map((brand) => (
+              <Tab.Panel key={brand.brand_id} className="px-4">
+                {products.length > 0 ? (
+                  <div className="space-y-4">
+                    {products.map((product) => (
+                      <ProductComponent
+                        key={product.product_id}
+                        product={{
+                          product_id: product.product_id,
+                          product_image: product.product_image,
+                          product_name_ko: product.product_name_ko,
+                          product_name_en: product.product_name_en,
+                          brand: {
+                            brand_name_ko: brand.brand_name_ko,
+                            brand_name_en: brand.brand_name_en,
+                          },
+                        }}
+                      />
+                    ))}
+                  </div>
+                ) : (
+                  <div className="text-center py-8 text-black">
+                    이 브랜드의 제품이 없습니다.
+                  </div>
+                )}
+              </Tab.Panel>
+            ))
+          )}
         </Tab.Panels>
       </Tab.Group>
 
