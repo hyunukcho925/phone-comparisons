@@ -30,6 +30,7 @@ const BottomNavigation: React.FC = () => {
                 ? "text-primary font-bold"
                 : "text-gray-400 font-normal"
             }`}
+            title={item.name}
           >
             <item.icon className="size-6 mb-1" />
             <span className="text-xs">{item.name}</span>

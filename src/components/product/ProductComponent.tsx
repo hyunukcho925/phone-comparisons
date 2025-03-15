@@ -23,12 +23,14 @@ export default function ProductComponent({ product }: ProductComponentProps) {
         product.product_name_en
       )}`}
       className="block"
+      title={product.product_name_ko}
     >
       <div className="flex items-center h-32 space-x-4 border rounded-xl p-4 hover:shadow-lg transition-shadow bg-white">
         <div className="relative w-24 h-32">
           <Image
             src={product.product_image}
             alt={product.product_name_ko}
+            title={product.product_name_ko}
             fill
             className="object-contain rounded-md"
           />

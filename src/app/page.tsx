@@ -19,7 +19,7 @@ export default async function Page() {
         </h1>
 
         <div className="relative mb-12">
-          <Link href="/search" className="block">
+          <Link href="/search" className="block" title="검색">
             <input
               type="text"
               placeholder="핸드폰을 검색해 보세요"
@@ -33,11 +33,11 @@ export default async function Page() {
         </div>
 
         <div className="mb-12">
-          <Link href="/comparison" className="block w-full">
+          <Link href="/comparison" className="block w-full" title="비교하기">
             <div className="w-full bg-white rounded-xl p-6 flex flex-col items-center border hover:shadow-lg transition-shadow">
-              <p className="font-bold text-xl mb-4">
+              <h2 className="font-bold text-xl mb-4">
                 비교하고 싶은 핸드폰이 있나요?
-              </p>
+              </h2>
               <div className="flex items-center justify-center w-full gap-4">
                 <div className="w-32 h-32 rounded-full bg-gray-100 flex items-center justify-center border-2 border-dashed border-gray-300">
                   <span className="text-xl text-gray-400">+</span>
