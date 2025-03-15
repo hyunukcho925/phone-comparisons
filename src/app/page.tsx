@@ -17,6 +17,7 @@ export default async function Page() {
           <br />
           <span className="text-primary">스펙이 어떻게 될까요?</span>
         </h1>
+
         <div className="relative mb-12">
           <Link href="/search" className="block">
             <input
@@ -27,6 +28,28 @@ export default async function Page() {
             />
             <div className="absolute right-3 top-1/2 transform -translate-y-1/2 bg-primary rounded-full p-2">
               <SearchIcon className="h-5 w-5 text-white" />
+            </div>
+          </Link>
+        </div>
+
+        <div className="mb-12">
+          <Link href="/comparison" className="block w-full">
+            <div className="w-full bg-white rounded-xl p-6 flex flex-col items-center border hover:shadow-lg transition-shadow">
+              <p className="font-bold text-xl mb-4">
+                비교하고 싶은 핸드폰이 있나요?
+              </p>
+              <div className="flex items-center justify-center w-full gap-4">
+                <div className="w-32 h-32 rounded-full bg-gray-100 flex items-center justify-center border-2 border-dashed border-gray-300">
+                  <span className="text-xl text-gray-400">+</span>
+                </div>
+                <div className="text-lg font-bold text-primary">VS</div>
+                <div className="w-32 h-32 rounded-full bg-gray-100 flex items-center justify-center border-2 border-dashed border-gray-300">
+                  <span className="text-xl text-gray-400">+</span>
+                </div>
+              </div>
+              <p className="text-gray-600 text-base mt-4">
+                두 제품의 스펙을 한눈에 비교해 보세요
+              </p>
             </div>
           </Link>
         </div>
