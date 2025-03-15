@@ -13,7 +13,6 @@ interface PageProps {
   }>;
 }
 
-// 타입 정의 추가
 interface JsonLd {
   '@context': string;
   '@type': string;
@@ -255,8 +254,7 @@ export default async function ProductPage({ params }: PageProps) {
         <section className="px-4 py-6">
           <header>
             <h2 className="text-xl font-bold mb-4">
-              {product.product_name_ko} <br />
-              <span className="mt-2 inline-block">스펙 요약</span>
+              {product.product_name_ko} 스펙 요약
             </h2>
           </header>
           <div>
@@ -473,6 +471,55 @@ export default async function ProductPage({ params }: PageProps) {
               {product.product_name_ko} 자급제의 디스플레이 스펙은 다음과
               같습니다.
             </p>
+          </div>
+        </section>
+
+        <div className="w-full h-[8px] bg-gray-100" />
+
+        {/* 다른 상품 보기 섹션 */}
+        <section className="px-4 py-6">
+          <header>
+            <h2 className="text-xl font-bold mb-4">
+              {product.product_name_ko}와 비슷한 핸드폰
+            </h2>
+          </header>
+          <div className="grid grid-cols-3 gap-4">
+            {products
+              .filter(
+                (p) =>
+                  p.brand?.brand_name_en === product.brand?.brand_name_en &&
+                  p.product_name_en !== product.product_name_en
+              )
+              .slice(0, 3)
+              .map((relatedProduct) => (
+                <a
+                  key={relatedProduct.product_id}
+                  href={`/${toSlug(
+                    relatedProduct.brand?.brand_name_en || ""
+                  )}/${toSlug(relatedProduct.product_name_en)}`}
+                  className="block border rounded-lg hover:bg-gray-50 transition-colors"
+                >
+                  <div className="aspect-square relative m-4">
+                    <Image
+                      src={relatedProduct.product_image}
+                      alt={relatedProduct.product_name_ko}
+                      title={relatedProduct.product_name_ko}
+                      fill
+                      className="object-contain"
+                      sizes="(max-width: 768px) 33vw, 33vw"
+                    />
+                  </div>
+                  <div className="bg-gray-100 p-2 text-sm">
+                    <p className="text-gray-700 mb-1">
+                      {relatedProduct.brand?.brand_name_ko}(
+                      {relatedProduct.brand?.brand_name_en})
+                    </p>
+                    <p className="text-gray-900 font-bold">
+                      {relatedProduct.product_name_ko}
+                    </p>
+                  </div>
+                </a>
+              ))}
           </div>
         </section>
 
