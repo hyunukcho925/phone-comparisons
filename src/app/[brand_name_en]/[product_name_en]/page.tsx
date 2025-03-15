@@ -480,7 +480,7 @@ export default async function ProductPage({ params }: PageProps) {
         <section className="px-4 py-6">
           <header>
             <h2 className="text-xl font-bold mb-4">
-              {product.product_name_ko}와 비슷한 핸드폰
+              비교해 볼만한 핸드폰
             </h2>
           </header>
           <div className="grid grid-cols-3 gap-4">
@@ -498,6 +498,7 @@ export default async function ProductPage({ params }: PageProps) {
                     relatedProduct.brand?.brand_name_en || ""
                   )}/${toSlug(relatedProduct.product_name_en)}`}
                   className="block border rounded-lg hover:bg-gray-50 transition-colors"
+                  title={relatedProduct.product_name_ko}
                 >
                   <div className="aspect-square relative m-4">
                     <Image
