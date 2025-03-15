@@ -91,11 +91,11 @@ export default async function ProductPage({ params }: PageProps) {
   }
 
   return (
-    <div className="pb-4">
+    <main className="pb-4">
       <ProductHeader />
-      <div>
+      <article>
         {/* 제품 이미지 섹션 */}
-        <div className="bg-gray-100 py-6 px-24">
+        <section className="bg-gray-100 py-6 px-24">
           <div className="flex justify-center items-center">
             <Image
               src={product.product_image}
@@ -110,33 +110,35 @@ export default async function ProductPage({ params }: PageProps) {
               quality={85}
             />
           </div>
-        </div>
+        </section>
 
         {/* 제품 기본 정보 */}
-        <div className="px-4 py-6">
-          <div className="mb-4">
+        <section className="px-4 py-6">
+          <header className="mb-4">
             <p className="text-sm text-gray-600 mb-1">
               {product.brand?.brand_name_en}
             </p>
             <h1 className="text-2xl font-bold text-gray-900">
               {product.product_name_ko} 자급제
             </h1>
-          </div>
+          </header>
 
           <CompareButton product={product} />
           <p className="text-gray-800 text-center mt-4 text-sm">
             {product.product_name_ko} 자급제 스펙을 비교해 보세요☝🏻
           </p>
-        </div>
+        </section>
 
         <div className="w-full h-[8px] bg-gray-100" />
 
         {/* 구매처 섹션 */}
-        <div className="px-4 py-6">
-          <h2 className="text-xl font-bold mb-4">
-            {product.product_name_ko} <br />
-            <span className="mt-2 inline-block">자급제</span>
-          </h2>
+        <section className="px-4 py-6">
+          <header>
+            <h2 className="text-xl font-bold mb-4">
+              {product.product_name_ko} <br />
+              <span className="mt-2 inline-block">자급제</span>
+            </h2>
+          </header>
 
           {product.distributors && product.distributors.length > 0 && (
             <div className="space-y-2">
@@ -163,16 +165,18 @@ export default async function ProductPage({ params }: PageProps) {
               같습니다.
             </p>
           </div>
-        </div>
+        </section>
 
         <div className="w-full h-[8px] bg-gray-100" />
 
         {/* 제품 상세 정보 */}
-        <div className="px-4 py-6">
-          <h2 className="text-xl font-bold mb-4">
-            {product.product_name_ko} <br />
-            <span className="mt-2 inline-block">스펙 요약</span>
-          </h2>
+        <section className="px-4 py-6">
+          <header>
+            <h2 className="text-xl font-bold mb-4">
+              {product.product_name_ko} <br />
+              <span className="mt-2 inline-block">스펙 요약</span>
+            </h2>
+          </header>
           <div>
             <div className="flex justify-between border-b border-gray-100 py-4">
               <h3 className="text-gray-800">브랜드</h3>
@@ -211,16 +215,18 @@ export default async function ProductPage({ params }: PageProps) {
               요약은 다음과 같습니다.
             </p>
           </div>
-        </div>
+        </section>
 
         <div className="w-full h-[8px] bg-gray-100" />
 
         {/* 카메라 스펙 섹션 */}
-        <div className="px-4 py-6">
-          <h2 className="text-xl font-bold mb-4">
-            {product.product_name_ko} <br />
-            <span className="mt-2 inline-block">카메라 스펙</span>
-          </h2>
+        <section className="px-4 py-6">
+          <header>
+            <h2 className="text-xl font-bold mb-4">
+              {product.product_name_ko} <br />
+              <span className="mt-2 inline-block">카메라 스펙</span>
+            </h2>
+          </header>
           <div>
             <div className="flex justify-between border-b border-gray-100 py-4">
               <h3 className="text-gray-800">초광각 카메라</h3>
@@ -252,16 +258,18 @@ export default async function ProductPage({ params }: PageProps) {
               {product.product_name_ko} 자급제의 카메라 스펙은 다음과 같습니다.
             </p>
           </div>
-        </div>
+        </section>
 
         <div className="w-full h-[8px] bg-gray-100" />
 
         {/* 배터리 스펙 섹션 */}
-        <div className="px-4 py-6">
-          <h2 className="text-xl font-bold mb-4">
-            {product.product_name_ko} <br />
-            <span className="mt-2 inline-block">배터리 스펙</span>
-          </h2>
+        <section className="px-4 py-6">
+          <header>
+            <h2 className="text-xl font-bold mb-4">
+              {product.product_name_ko} <br />
+              <span className="mt-2 inline-block">배터리 스펙</span>
+            </h2>
+          </header>
           <div>
             <div className="flex justify-between border-b border-gray-100 py-4">
               <h3 className="text-gray-800">배터리 용량</h3>
@@ -281,16 +289,18 @@ export default async function ProductPage({ params }: PageProps) {
               {product.product_name_ko} 자급제의 배터리 스펙은 다음과 같습니다.
             </p>
           </div>
-        </div>
+        </section>
 
         <div className="w-full h-[8px] bg-gray-100" />
 
         {/* AP 섹션 */}
-        <div className="px-4 py-6">
-          <h2 className="text-xl font-bold mb-4">
-            {product.product_name_ko} <br />
-            <span className="mt-2 inline-block">프로세서</span>
-          </h2>
+        <section className="px-4 py-6">
+          <header>
+            <h2 className="text-xl font-bold mb-4">
+              {product.product_name_ko} <br />
+              <span className="mt-2 inline-block">프로세서</span>
+            </h2>
+          </header>
           <div>
             <div className="flex justify-between border-b border-gray-100 py-4">
               <h3 className="text-gray-800">프로세서</h3>
@@ -311,16 +321,18 @@ export default async function ProductPage({ params }: PageProps) {
               같습니다.
             </p>
           </div>
-        </div>
+        </section>
 
         <div className="w-full h-[8px] bg-gray-100" />
 
         {/* 제품 상세 정보 */}
-        <div className="px-4 py-6">
-          <h2 className="text-xl font-bold mb-4">
-            {product.product_name_ko} <br />
-            <span className="mt-2 inline-block">무게 & 크기</span>
-          </h2>
+        <section className="px-4 py-6">
+          <header>
+            <h2 className="text-xl font-bold mb-4">
+              {product.product_name_ko} <br />
+              <span className="mt-2 inline-block">무게 & 크기</span>
+            </h2>
+          </header>
           <div>
             <div className="flex justify-between border-b border-gray-100 py-4">
               <h3 className="text-gray-800">무게</h3>
@@ -341,16 +353,18 @@ export default async function ProductPage({ params }: PageProps) {
               같습니다.
             </p>
           </div>
-        </div>
+        </section>
 
         <div className="w-full h-[8px] bg-gray-100" />
 
         {/* 디스플레이 섹션 */}
-        <div className="px-4 py-6">
-          <h2 className="text-xl font-bold mb-4">
-            {product.product_name_ko} <br />
-            <span className="mt-2 inline-block">디스플레이</span>
-          </h2>
+        <section className="px-4 py-6">
+          <header>
+            <h2 className="text-xl font-bold mb-4">
+              {product.product_name_ko} <br />
+              <span className="mt-2 inline-block">디스플레이</span>
+            </h2>
+          </header>
           <div>
             <div className="flex justify-between border-b border-gray-100 py-4">
               <h3 className="text-gray-800">메인 디스플레이 크기</h3>
@@ -383,11 +397,11 @@ export default async function ProductPage({ params }: PageProps) {
               같습니다.
             </p>
           </div>
-        </div>
+        </section>
 
         {/* 하단 고정 구매 버튼 */}
         {product.distributors && product.distributors.length > 0 && (
-          <div className="fixed bottom-0 left-0 right-0 px-4 py-2 bg-white max-w-[500px] mx-auto">
+          <nav className="fixed bottom-0 left-0 right-0 px-4 py-2 bg-white max-w-[500px] mx-auto">
             <a
               href={product.distributors[0].link}
               target="_blank"
@@ -397,9 +411,9 @@ export default async function ProductPage({ params }: PageProps) {
             >
               구매하러 가기
             </a>
-          </div>
+          </nav>
         )}
-      </div>
-    </div>
+      </article>
+    </main>
   );
 }
