@@ -133,19 +133,27 @@ export default function ComparePage() {
           <SpecSection title="카메라">
             <CompareRow
               label="초광각"
-              values={products.map((p) => `${p.camera_ultrawide}MP`)}
+              values={products.map((p) =>
+                p.camera_ultrawide ? `${p.camera_ultrawide}MP` : "-"
+              )}
             />
             <CompareRow
               label="광각"
-              values={products.map((p) => `${p.camera_wide}MP`)}
+              values={products.map((p) =>
+                p.camera_wide ? `${p.camera_wide}MP` : "-"
+              )}
             />
             <CompareRow
               label="망원"
-              values={products.map((p) => `${p.camera_telephoto}MP`)}
+              values={products.map((p) =>
+                p.camera_telephoto ? `${p.camera_telephoto}MP` : "-"
+              )}
             />
             <CompareRow
               label="전면"
-              values={products.map((p) => `${p.camera_front}MP`)}
+              values={products.map((p) =>
+                p.camera_front ? `${p.camera_front}MP` : "-"
+              )}
             />
           </SpecSection>
 
@@ -153,12 +161,16 @@ export default function ComparePage() {
           <SpecSection title="배터리">
             <CompareRow
               label="용량"
-              values={products.map((p) => `${p.battery_capacity}mAh`)}
+              values={products.map((p) =>
+                p.battery_capacity ? `${p.battery_capacity}mAh` : "-"
+              )}
             />
             <CompareRow
               label="비디오 재생"
-              values={products.map(
-                (p) => `최대 ${p.battery_video_playback}시간`
+              values={products.map((p) =>
+                p.battery_video_playback
+                  ? `최대 ${p.battery_video_playback}시간`
+                  : "-"
               )}
             />
           </SpecSection>
@@ -183,7 +195,7 @@ export default function ComparePage() {
             />
             <CompareRow
               label="크기"
-              values={products.map((p) => p.product_size)}
+              values={products.map((p) => `${p.product_size}mm`)}
             />
           </SpecSection>
 
@@ -236,7 +248,7 @@ function CompareRow({ label, values }: { label: string; values: (string | undefi
       <div className="w-1/5 text-gray-600">{label}</div>
       {values.map((value, index) => (
         <div key={index} className="w-2/5 font-medium text-center">
-          {value || '-'}
+          {value === null || value === undefined || value === '' ? '-' : value}
         </div>
       ))}
       {/* 제품이 없는 경우 빈 칸 표시 */}
