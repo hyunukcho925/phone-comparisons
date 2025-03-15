@@ -86,11 +86,17 @@ export async function getProducts(): Promise<Product[]> {
 
     return data.map(product => ({
       ...product,
+      ...Object.fromEntries(
+        Object.entries(product).map(([key, value]) => [
+          key,
+          value === null || value === '' ? '-' : value
+        ])
+      ),
       distributors: Array.isArray(product.distributors) 
         ? product.distributors 
         : product.distributors ? [product.distributors] : [],
       colors: product.colors || []
-    }));
+    })) as Product[];
   } catch (error) {
     console.error('데이터베이스 조회 중 오류 발생:', error);
     throw new Error('제품 데이터를 불러오는데 실패했습니다.');
@@ -132,9 +138,15 @@ export async function getProductById(productId: number): Promise<Product | null>
 
     return {
       ...data,
+      ...Object.fromEntries(
+        Object.entries(data).map(([key, value]) => [
+          key,
+          value === null || value === '' ? '-' : value
+        ])
+      ),
       distributors: data.distributors || [],
       colors: data.colors || []
-    };
+    } as Product;
   } catch (error) {
     console.error('데이터베이스 조회 중 오류 발생:', error);
     throw new Error('제품 데이터를 불러오는데 실패했습니다.');

@@ -72,13 +72,13 @@ export default async function ProductPage({ params }: PageProps) {
               {product.brand?.brand_name_en}
             </p>
             <h1 className="text-2xl font-bold text-gray-900">
-              {product.brand?.brand_name_ko} {product.product_name_ko}
+              {product.product_name_ko} 자급제
             </h1>
           </div>
 
           <CompareButton product={product} />
-          <p className="text-gray-800 font-bold text-center mt-4">
-            {product.product_name_ko} 스펙을 비교해 보세요☝🏻
+          <p className="text-gray-800 text-center mt-4 text-sm">
+            {product.product_name_ko} 자급제 스펙을 비교해 보세요☝🏻
           </p>
         </div>
 
@@ -88,7 +88,7 @@ export default async function ProductPage({ params }: PageProps) {
         <div className="px-4 py-6">
           <h2 className="text-xl font-bold mb-4">
             {product.product_name_ko} <br />
-            <span className="mt-2 inline-block">구매처</span>
+            <span className="mt-2 inline-block">자급제</span>
           </h2>
 
           {product.distributors && product.distributors.length > 0 && (
@@ -109,6 +109,12 @@ export default async function ProductPage({ params }: PageProps) {
               ))}
             </div>
           )}
+          <div className="mt-4">
+            <p className="text-gray-500 font-light text-center text-sm">
+              {product.product_name_ko} 자급제를 구매할 수 있는 링크의 경우
+              상단과 같습니다.
+            </p>
+          </div>
         </div>
 
         <div className="w-full h-[8px] bg-gray-100" />
@@ -151,6 +157,12 @@ export default async function ProductPage({ params }: PageProps) {
               </p>
             </div>
           </div>
+          <div className="mt-4">
+            <p className="text-gray-500 font-light text-sm">
+              {product.product_name_ko} 자급제의 브랜드, 크기, 무게 등의 스펙
+              요약은 다음과 같습니다.
+            </p>
+          </div>
         </div>
 
         <div className="w-full h-[8px] bg-gray-100" />
@@ -187,6 +199,11 @@ export default async function ProductPage({ params }: PageProps) {
               </p>
             </div>
           </div>
+          <div className="mt-4">
+            <p className="text-gray-500 font-light text-sm">
+              {product.product_name_ko} 자급제의 카메라 스펙은 다음과 같습니다.
+            </p>
+          </div>
         </div>
 
         <div className="w-full h-[8px] bg-gray-100" />
@@ -211,6 +228,11 @@ export default async function ProductPage({ params }: PageProps) {
               </p>
             </div>
           </div>
+          <div className="mt-4">
+            <p className="text-gray-500 font-light text-sm">
+              {product.product_name_ko} 자급제의 배터리 스펙은 다음과 같습니다.
+            </p>
+          </div>
         </div>
 
         <div className="w-full h-[8px] bg-gray-100" />
@@ -219,7 +241,7 @@ export default async function ProductPage({ params }: PageProps) {
         <div className="px-4 py-6">
           <h2 className="text-xl font-bold mb-4">
             {product.product_name_ko} <br />
-            <span className="mt-2 inline-block">AP</span>
+            <span className="mt-2 inline-block">프로세서</span>
           </h2>
           <div>
             <div className="flex justify-between border-b border-gray-100 py-4">
@@ -234,6 +256,12 @@ export default async function ProductPage({ params }: PageProps) {
                 {product.core_count}
               </p>
             </div>
+          </div>
+          <div className="mt-4">
+            <p className="text-gray-500 font-light text-sm">
+              {product.product_name_ko} 자급제의 프로세서 스펙은 다음과
+              같습니다.
+            </p>
           </div>
         </div>
 
@@ -253,11 +281,17 @@ export default async function ProductPage({ params }: PageProps) {
               </p>
             </div>
             <div className="flex justify-between border-b border-gray-100 py-4">
-              <h3 className="text-gray-800">크기(세로x가로x두께, mm)</h3>
+              <h3 className="text-gray-800">크기 (세로x가로x두께)</h3>
               <p className="text-gray-800 font-semibold">
-                {product.product_size}
+                {product.product_size}mm
               </p>
             </div>
+          </div>
+          <div className="mt-4">
+            <p className="text-gray-500 font-light text-sm">
+              {product.product_name_ko} 자급제의 무게&크기 스펙은 다음과
+              같습니다.
+            </p>
           </div>
         </div>
 
@@ -283,7 +317,7 @@ export default async function ProductPage({ params }: PageProps) {
               </p>
             </div>
             <div className="flex justify-between border-b border-gray-100 py-4">
-              <h3 className="text-gray-800">최대 밝기 (Peak Brightness)</h3>
+              <h3 className="text-gray-800">최대 밝기</h3>
               <p className="text-gray-800 font-semibold">
                 {product.display_max_brightness}nits
               </p>
@@ -294,6 +328,12 @@ export default async function ProductPage({ params }: PageProps) {
                 {product.refresh_rate}Hz
               </p>
             </div>
+          </div>
+          <div className="mt-4">
+            <p className="text-gray-500 font-light text-sm">
+              {product.product_name_ko} 자급제의 디스플레이 스펙은 다음과
+              같습니다.
+            </p>
           </div>
         </div>
 
