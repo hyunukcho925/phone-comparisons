@@ -5,12 +5,13 @@ import BottomNavigation from '@/components/navigation/BottomNavigation';
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import MagazineHeader from "@/components/header/MagazineHedaer";
 import { getMagazines } from "@/lib/getMagazines";
+import Image from 'next/image';
 
 interface Magazine {
   magazine_id: number;
-  title: string;
-  content: string;
-  thumbnail_image: string;
+  magazine_title: string;
+  magazine_description: string;
+  magazine_thumbnail: string;
   created_at: string;
 }
 
@@ -49,7 +50,7 @@ export default function MagazinePage() {
   };
 
   return (
-    <div className="pb-16 bg-white min-h-[100vh]">
+    <div className="pb-16 bg-gray-100 min-h-[100vh]">
       <MagazineHeader />
 
       <div className="p-4">
@@ -64,15 +65,18 @@ export default function MagazinePage() {
                 key={magazine.magazine_id} 
                 className="bg-white rounded-lg shadow-md overflow-hidden"
               >
-                <img 
-                  src={magazine.thumbnail_image} 
-                  alt={magazine.title}
-                  className="w-full h-48 object-cover"
-                />
+                <div className="relative w-full h-48">
+                  <Image 
+                    src={magazine.magazine_thumbnail} 
+                    alt={magazine.magazine_title}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
                 <div className="p-4">
-                  <h2 className="text-lg font-bold mb-2">{magazine.title}</h2>
+                  <h2 className="text-lg font-bold mb-2">{magazine.magazine_title}</h2>
                   <p className="text-gray-600 text-sm line-clamp-2">
-                    {magazine.content}
+                    {magazine.magazine_description}
                   </p>
                   <p className="text-gray-400 text-xs mt-2">
                     {new Date(magazine.created_at).toLocaleDateString('ko-KR')}

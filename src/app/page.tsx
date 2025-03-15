@@ -11,7 +11,7 @@ export default async function Page() {
   return (
     <div className="flex flex-col min-h-screen-56">
       <MainHeader />
-      <main className="flex-grow px-4 py-6">
+      <main className="flex-grow px-4 py-6 bg-gray-100">
         <h1 className="text-2xl font-extrabold mb-6 text-center leading-normal">
           <span className="text-black-500">원하는 핸드폰, </span>
           <br />

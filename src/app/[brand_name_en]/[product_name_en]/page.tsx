@@ -111,8 +111,7 @@ export default async function ProductPage({ params }: PageProps) {
           )}
           <div className="mt-4">
             <p className="text-gray-500 font-light text-center text-sm">
-              {product.product_name_ko} 자급제를 구매할 수 있는 링크의 경우
-              상단과 같습니다.
+              {product.product_name_ko} 자급제를 구매할 수 있는 링크는 다음과 같습니다.
             </p>
           </div>
         </div>
