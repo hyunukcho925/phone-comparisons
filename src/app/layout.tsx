@@ -4,15 +4,15 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import FontLoader from "./fontloader";
 
 export const metadata: Metadata = {
-  title: "핸드폰 스펙 비교 | 폰스펙",
+  title: "핸드폰 비교 사이트 | 폰비교",
   description:
-    "폰스펙은 아이폰부터 갤럭시폰까지 다양한 휴대폰의 스펙을 한눈에 비교할 수 있는 플랫폼입니다. 최신폰부터 오래된 폰까지, 상세한 스펙 정보와 실사용 리뷰를 제공하여 현명한 구매 결정을 도와드립니다.",
+    "폰비교는 아이폰부터 갤럭시까지 다양한 휴대폰의 스펙을 한눈에 비교할 수 있는 플랫폼입니다. 디스플레이 크기, 카메라 화소, 배터리 용량, 프로세서 성능 등 상세 정보를 제공하며, 최신폰부터 가성비 스마트폰까지 합리적인 구매 결정을 돕습니다.",
   openGraph: {
-    title: "핸드폰 스펙 비교 | 폰스펙",
+    title: "핸드폰 비교 사이트 | 폰비교",
     description:
-      "폰스펙은 아이폰부터 갤럭시폰까지 다양한 휴대폰의 스펙을 한눈에 비교할 수 있는 플랫폼입니다. 최신폰부터 오래된 폰까지, 상세한 스펙 정보와 실사용 리뷰를 제공하여 현명한 구매 결정을 도와드립니다.",
-    url: "https://phonespec.com/",
-    siteName: "핸드폰 스펙 비교 | 폰스펙",
+      "폰비교는 아이폰부터 갤럭시까지 다양한 휴대폰의 스펙을 한눈에 비교할 수 있는 플랫폼입니다. 디스플레이 크기, 카메라 화소, 배터리 용량, 프로세서 성능 등 상세 정보를 제공하며, 최신폰부터 가성비 스마트폰까지 합리적인 구매 결정을 돕습니다.",
+    url: "https://phonecomparisons.com/",
+    siteName: "핸드폰 비교 사이트 | 폰비교",
     images: [
       {
         url: "https://rovdcewcphlrygwiozip.supabase.co/storage/v1/object/public/image/meta/ogimage.webp",
@@ -25,9 +25,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "핸드폰 스펙 비교 | 폰스펙",
+    title: "핸드폰 비교 사이트 | 폰비교",
     description:
-      "폰스펙은 아이폰부터 갤럭시폰까지 다양한 휴대폰의 스펙을 한눈에 비교할 수 있는 플랫폼입니다. 최신폰부터 오래된 폰까지, 상세한 스펙 정보와 실사용 리뷰를 제공하여 현명한 구매 결정을 도와드립니다.",
+      "폰비교는 아이폰부터 갤럭시까지 다양한 휴대폰의 스펙을 한눈에 비교할 수 있는 플랫폼입니다. 디스플레이 크기, 카메라 화소, 배터리 용량, 프로세서 성능 등 상세 정보를 제공하며, 최신폰부터 가성비 스마트폰까지 합리적인 구매 결정을 돕습니다.",
     images: [
       "https://rovdcewcphlrygwiozip.supabase.co/storage/v1/object/public/image/meta/ogimage.webp",
     ],
@@ -35,22 +35,23 @@ export const metadata: Metadata = {
   keywords: [
     "스마트폰 비교",
     "휴대폰 스펙",
-    "폰스펙",
-    "스마트폰 스펙",
-    "휴대폰 비교",
-    "스마트폰 구매",
-    "폰 스펙 비교",
-    "스마트폰 성능",
-    "휴대폰 카메라",
-    "배터리 성능",
-    "중고폰 비교",
-    "스마트폰 리뷰",
-    "휴대폰 추천",
-    "스마트폰 가격비교",
-    "핸드폰 구매가이드",
+    "스마트폰 성능 비교",
+    "휴대폰 가격비교",
+    "스마트폰 카메라 성능",
+    "배터리 용량 비교",
+    "아이폰 vs 갤럭시",
+    "갤럭시 스펙",
+    "아이폰 스펙",
+    "샤오미 스마트폰",
+    "픽셀폰 성능",
+    "스마트폰 추천",
+    "최신 스마트폰",
+    "가성비 스마트폰",
+    "핸드폰 스펙 분석",
+    "핸드폰 성능 테스트",
   ],
-  authors: [{ name: "PHONESPEC" }],
-  creator: "PHONESPEC",
+  authors: [{ name: "PHONECOMPARISONS" }],
+  creator: "PHONECOMPARISONS",
   icons: {
     icon: "/favicon.ico",
   },
@@ -59,9 +60,9 @@ export const metadata: Metadata = {
     follow: true,
   },
   alternates: {
-    canonical: "https://phonespec.com/",
+    canonical: "https://phonecomparisons.com/",
   },
-  publisher: "PHONESPEC",
+  publisher: "PHONECOMPARISONS",
 };
 
 export default function RootLayout({

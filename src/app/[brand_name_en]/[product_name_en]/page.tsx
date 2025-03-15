@@ -22,6 +22,52 @@ export async function generateStaticParams() {
   }));
 }
 
+export async function generateMetadata({ params }: PageProps) {
+  const products = await getProducts();
+  const resolvedParams = await params;
+  const { brand_name_en, product_name_en } = resolvedParams;
+  
+  const product = products.find(
+    (p) =>
+      toSlug(p.brand?.brand_name_en || "") === brand_name_en &&
+      toSlug(p.product_name_en) === product_name_en
+  );
+
+  if (!product) {
+    return {
+      title: '제품을 찾을 수 없습니다',
+      description: '요청하신 제품을 찾을 수 없습니다.'
+    };
+  }
+
+  const title = `${product.product_name_ko} 자급제 스펙 비교 | ${product.brand?.brand_name_ko} 스마트폰 성능, 카메라, 배터리, 가격 총정리!`;
+  const description = `${product.product_name_ko} 자급제 스마트폰 스펙 비교! ${product.product_name_ko}의 디스플레이, 카메라, 배터리, 프로세서 등 모든 스펙을 한눈에 확인하세요. ${product.display_size_inch}인치 고해상도 디스플레이, ${product.camera_wide}MP 카메라, ${product.battery_capacity}mAh 배터리 성능까지! ${product.brand?.brand_name_ko}의 인기 스마트폰 ${product.product_name_ko}을 최저가로 구매할 수 있는 곳도 함께 안내해 드립니다. ${product.product_name_ko} 스펙, 가격, 구매 링크까지 한 번에 확인하세요!`;
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      images: [{
+        url: product.product_image,
+        width: 800,
+        height: 800,
+      }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [{
+        url: product.product_image,
+        width: 800,
+        height: 800,
+      }],
+    },
+  };
+}
+
 export default async function ProductPage({ params }: PageProps) {
   const products = await getProducts();
   const resolvedParams = await params;
@@ -53,6 +99,7 @@ export default async function ProductPage({ params }: PageProps) {
           <div className="flex justify-center items-center">
             <Image
               src={product.product_image}
+              title={`${product.brand?.brand_name_ko} ${product.product_name_ko}`}
               alt={`${product.brand?.brand_name_ko} ${product.product_name_ko}`}
               width={240}
               height={240}
