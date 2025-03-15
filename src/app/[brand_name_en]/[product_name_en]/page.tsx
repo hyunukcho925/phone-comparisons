@@ -99,8 +99,8 @@ export default async function ProductPage({ params }: PageProps) {
           <div className="flex justify-center items-center">
             <Image
               src={product.product_image}
-              title={`${product.brand?.brand_name_ko} ${product.product_name_ko}`}
-              alt={`${product.brand?.brand_name_ko} ${product.product_name_ko}`}
+              title={`${product.product_name_ko} 자급제`}
+              alt={`${product.product_name_ko} 자급제`}
               width={240}
               height={240}
               style={{ width: "100%", height: "auto" }}
@@ -147,6 +147,7 @@ export default async function ProductPage({ params }: PageProps) {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex justify-between items-center p-4 border rounded-lg hover:bg-gray-50 transition-colors"
+                  title={`${product.product_name_ko} 자급제`}
                 >
                   <span className="text-gray-900 font-medium">
                     {distributor.distributor_name}
@@ -158,7 +159,8 @@ export default async function ProductPage({ params }: PageProps) {
           )}
           <div className="mt-4">
             <p className="text-gray-500 font-light text-center text-sm">
-              {product.product_name_ko} 자급제를 구매할 수 있는 링크는 다음과 같습니다.
+              {product.product_name_ko} 자급제를 구매할 수 있는 링크는 다음과
+              같습니다.
             </p>
           </div>
         </div>
@@ -391,6 +393,7 @@ export default async function ProductPage({ params }: PageProps) {
               target="_blank"
               rel="noopener noreferrer"
               className="w-full bg-primary text-white font-bold py-3 px-2 rounded-lg block text-center"
+              title={`${product.product_name_ko} 자급제`}
             >
               구매하러 가기
             </a>
