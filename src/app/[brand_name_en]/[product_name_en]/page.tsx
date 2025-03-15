@@ -13,6 +13,41 @@ interface PageProps {
   }>;
 }
 
+// 타입 정의 추가
+interface JsonLd {
+  '@context': string;
+  '@type': string;
+  name: string;
+  description: string;
+  brand: {
+    '@type': string;
+    name: string | undefined;
+  };
+  image: string;
+  manufacturer: {
+    '@type': string;
+    name: string | undefined;
+  };
+  specs: {
+    '@type': string;
+    display: string;
+    camera: string;
+    battery: string;
+    processor: string;
+    weight: string;
+    size: string;
+  };
+  offers?: Array<{
+    '@type': string;
+    url: string;
+    seller: {
+      '@type': string;
+      name: string;
+    };
+    availability: string;
+  }>;
+}
+
 export async function generateStaticParams() {
   const products = await getProducts();
 
@@ -43,28 +78,76 @@ export async function generateMetadata({ params }: PageProps) {
   const title = `${product.product_name_ko} 자급제 스펙 비교 | ${product.brand?.brand_name_ko} 스마트폰 성능, 카메라, 배터리, 가격 총정리!`;
   const description = `${product.product_name_ko} 자급제 스마트폰 스펙 비교! ${product.product_name_ko}의 디스플레이, 카메라, 배터리, 프로세서 등 모든 스펙을 한눈에 확인하세요. ${product.display_size_inch}인치 고해상도 디스플레이, ${product.camera_wide}MP 카메라, ${product.battery_capacity}mAh 배터리 성능까지! ${product.brand?.brand_name_ko}의 인기 스마트폰 ${product.product_name_ko}을 최저가로 구매할 수 있는 곳도 함께 안내해 드립니다. ${product.product_name_ko} 스펙, 가격, 구매 링크까지 한 번에 확인하세요!`;
 
+  const jsonLd: JsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: `${product.product_name_ko}`,
+    description: description,
+    brand: {
+      '@type': 'Brand',
+      name: product.brand?.brand_name_ko
+    },
+    image: product.product_image,
+    manufacturer: {
+      '@type': 'Organization',
+      name: product.brand?.brand_name_ko
+    },
+    specs: {
+      '@type': 'ProductSpecification',
+      display: `${product.display_size_inch}인치 ${product.display_resolution}`,
+      camera: `메인 ${product.camera_wide}MP`,
+      battery: `${product.battery_capacity}mAh`,
+      processor: product.product_processor,
+      weight: `${product.product_weight}g`,
+      size: product.product_size
+    }
+  };
+
+  if (product.distributors && product.distributors.length > 0) {
+    jsonLd.offers = product.distributors.map(distributor => ({
+      '@type': 'Offer',
+      url: distributor.link,
+      seller: {
+        '@type': 'Organization',
+        name: distributor.distributor_name
+      },
+      availability: 'https://schema.org/InStock'
+    }));
+  }
+
   return {
     title,
     description,
     openGraph: {
       title,
       description,
-      images: [{
-        url: product.product_image,
-        width: 800,
-        height: 800,
-      }],
+      images: [
+        {
+          url: product.product_image,
+          width: 800,
+          height: 800,
+        },
+      ],
     },
     twitter: {
-      card: 'summary_large_image',
+      card: "summary_large_image",
       title,
       description,
-      images: [{
-        url: product.product_image,
-        width: 800,
-        height: 800,
-      }],
+      images: [
+        {
+          url: product.product_image,
+          width: 800,
+          height: 800,
+        },
+      ],
     },
+    alternates: {
+      canonical: `https://phonecomparisons.com/${brand_name_en}/${product_name_en}`,
+    },
+    other: {
+      "format-detection": "telephone=no",
+    },
+    jsonLd,
   };
 }
 
