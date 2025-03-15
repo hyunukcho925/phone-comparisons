@@ -218,8 +218,7 @@ export default async function ProductPage({ params }: PageProps) {
         <section className="px-4 py-6">
           <header>
             <h2 className="text-xl font-bold mb-4">
-              {product.product_name_ko} <br />
-              <span className="mt-2 inline-block">자급제</span>
+              {product.product_name_ko} 자급제
             </h2>
           </header>
 
@@ -306,8 +305,7 @@ export default async function ProductPage({ params }: PageProps) {
         <section className="px-4 py-6">
           <header>
             <h2 className="text-xl font-bold mb-4">
-              {product.product_name_ko} <br />
-              <span className="mt-2 inline-block">카메라 스펙</span>
+              {product.product_name_ko} 카메라
             </h2>
           </header>
           <div>
@@ -349,8 +347,7 @@ export default async function ProductPage({ params }: PageProps) {
         <section className="px-4 py-6">
           <header>
             <h2 className="text-xl font-bold mb-4">
-              {product.product_name_ko} <br />
-              <span className="mt-2 inline-block">배터리 스펙</span>
+              {product.product_name_ko} 배터리
             </h2>
           </header>
           <div>
@@ -380,8 +377,7 @@ export default async function ProductPage({ params }: PageProps) {
         <section className="px-4 py-6">
           <header>
             <h2 className="text-xl font-bold mb-4">
-              {product.product_name_ko} <br />
-              <span className="mt-2 inline-block">프로세서</span>
+              {product.product_name_ko} 프로세서
             </h2>
           </header>
           <div>
@@ -412,8 +408,7 @@ export default async function ProductPage({ params }: PageProps) {
         <section className="px-4 py-6">
           <header>
             <h2 className="text-xl font-bold mb-4">
-              {product.product_name_ko} <br />
-              <span className="mt-2 inline-block">무게 & 크기</span>
+              {product.product_name_ko} 무게 & 크기
             </h2>
           </header>
           <div>
@@ -444,8 +439,7 @@ export default async function ProductPage({ params }: PageProps) {
         <section className="px-4 py-6">
           <header>
             <h2 className="text-xl font-bold mb-4">
-              {product.product_name_ko} <br />
-              <span className="mt-2 inline-block">디스플레이</span>
+              {product.product_name_ko} 디스플레이
             </h2>
           </header>
           <div>
