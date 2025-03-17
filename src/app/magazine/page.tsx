@@ -3,15 +3,17 @@
 import React, { useState, useEffect } from "react";
 import BottomNavigation from '@/components/navigation/BottomNavigation';
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-import MagazineHeader from "@/components/header/MagazineHedaer";
+import MagazineHeader from "@/components/header/MagazineHeader";
 import { getMagazines } from "@/lib/getMagazines";
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 interface Magazine {
   magazine_id: number;
   magazine_title: string;
   magazine_description: string;
-  magazine_thumbnail: string;
+  magazine_url: string;
+  magazine_thumbnail_url: string;
   created_at: string;
 }
 
@@ -19,6 +21,7 @@ export default function MagazinePage() {
   const [magazines, setMagazines] = useState<Magazine[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const supabase = createClientComponentClient();
+  const router = useRouter();
 
   useEffect(() => {
     fetchMagazines();
@@ -41,7 +44,7 @@ export default function MagazinePage() {
   const fetchMagazines = async () => {
     try {
       const magazinesData = await getMagazines();
-      setMagazines(magazinesData);
+      setMagazines(magazinesData as Magazine[]);
     } catch (error) {
       console.error("매거진을 가져오는 중 오류가 발생했습니다:", error);
     } finally {
@@ -63,11 +66,12 @@ export default function MagazinePage() {
             {magazines.map((magazine) => (
               <div 
                 key={magazine.magazine_id} 
-                className="bg-white rounded-lg shadow-md overflow-hidden"
+                className="bg-white rounded-lg shadow-md overflow-hidden cursor-pointer hover:shadow-lg transition-shadow"
+                onClick={() => router.push(`/magazine/${magazine.magazine_url}`)}
               >
                 <div className="relative w-full h-48">
                   <Image 
-                    src={magazine.magazine_thumbnail} 
+                    src={magazine.magazine_thumbnail_url} 
                     alt={magazine.magazine_title}
                     fill
                     className="object-cover"

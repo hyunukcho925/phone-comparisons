@@ -9,7 +9,8 @@ export interface Magazine {
   magazine_id: number;
   magazine_title: string;
   magazine_description: string;
-  magazine_thumbnail: string;
+  magazine_url: string;
+  magazine_thumbnail_url: string;
   created_at: string;
 }
 
