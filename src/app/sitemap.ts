@@ -4,7 +4,7 @@ import { getMagazines } from '@/lib/getMagazines'
 import { toSlug } from '@/utils/stringUtils'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://phonecomparisons.com'
+  const baseUrl = 'https://www.phonecomparisons.com'
   
   // 기본 페이지
   const staticPages = [

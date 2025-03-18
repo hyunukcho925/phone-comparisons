@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import FontLoader from "./fontloader";
 
 export const metadata: Metadata = {
@@ -11,7 +10,7 @@ export const metadata: Metadata = {
     title: "핸드폰 비교 사이트 | 폰비교",
     description:
       "폰비교는 아이폰부터 갤럭시까지 다양한 휴대폰의 스펙을 한눈에 비교할 수 있는 플랫폼입니다. 디스플레이 크기, 카메라 화소, 배터리 용량, 프로세서 성능 등 상세 정보를 제공하며, 최신폰부터 가성비 스마트폰까지 합리적인 구매 결정을 돕습니다.",
-    url: "https://phonecomparisons.com/",
+    url: "https://www.phonecomparisons.com/",
     siteName: "핸드폰 비교 사이트 | 폰비교",
     images: [
       {
@@ -60,9 +59,12 @@ export const metadata: Metadata = {
     follow: true,
   },
   alternates: {
-    canonical: "https://phonecomparisons.com/",
+    canonical: "https://www.phonecomparisons.com/",
   },
   publisher: "PHONECOMPARISONS",
+  other: {
+    'naver-site-verification': '8a2d7afdbbf2745e0a67e7a6a88eaace4f45ac1b',
+  },
 };
 
 export default function RootLayout({
@@ -95,11 +97,11 @@ export default function RootLayout({
         `,
           }}
         />
+        <meta name="naver-site-verification" content="8a2d7afdbbf2745e0a67e7a6a88eaace4f45ac1b" />
       </head>
       <body>
         <FontLoader />
         <div className="container">{children}</div>
-        <SpeedInsights />
       </body>
     </html>
   );

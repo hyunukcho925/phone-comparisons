@@ -141,7 +141,7 @@ export async function generateMetadata({ params }: PageProps) {
       ],
     },
     alternates: {
-      canonical: `https://phonecomparisons.com/${brand_name_en}/${product_name_en}`,
+      canonical: `https://www.phonecomparisons.com/${brand_name_en}/${product_name_en}`,
     },
     other: {
       "format-detection": "telephone=no",
